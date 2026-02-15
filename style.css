@@ -1,0 +1,87 @@
+/* 기본 스타일 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 스크롤 페이드인 애니메이션 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 히어로 장식 아크 - 코닉 그라디언트로 부분 원호 생성 */
+.hero-arc {
+  background: conic-gradient(from -30deg, #ff6b45 0deg, #ff6b45 140deg, transparent 140deg, transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+  border-radius: 50%;
+}
+
+/* 히어로 보조 아크 */
+.hero-arc-sub {
+  background: conic-gradient(from 160deg, rgba(255, 107, 69, 0.25) 0deg, rgba(255, 107, 69, 0.25) 50deg, transparent 50deg, transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 2px));
+  border-radius: 50%;
+}
+
+/* 느린 회전 애니메이션 */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow 35s linear infinite reverse;
+}
+
+/* 네비게이션 스크롤 상태 - 다크모드 */
+.dark #navbar.scrolled {
+  background: rgba(10, 15, 28, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* 네비게이션 스크롤 상태 - 라이트모드 */
+#navbar.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* 테크바 스크롤바 숨기기 */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 선택 영역 색상 */
+::selection {
+  background: rgba(255, 107, 69, 0.3);
+  color: #ffffff;
+}
+
+/* 부드러운 이미지/아이콘 로드 */
+svg {
+  transition: color 0.3s ease;
+}
+
+/* 타임라인 서비스 아이템 딜레이 */
+.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(4) { transition-delay: 0.3s; }
